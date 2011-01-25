@@ -1,0 +1,105 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\usepackage[a4paper]{geometry}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{mdwlist}
+%\doublespacing
+
+
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+
+%\newcommand{\qed}{\nobreak \ifvmode \relax \else
+ %     \ifdim\lastskip<1.5em \hskip-\lastskip
+ %     \hskip1.5em plus0em minus0.5em \fi \nobreak
+ %     \vrule height0.75em width0.5em depth0.25em\fi}
+
+
+\begin{document}
+
+
+  \begin{titlepage}
+
+    \begin{center}
+
+      % Upper part of the page
+       %\includegraphics[width=0.15\textwidth]{~/Dissertation/Reports/Deliverable1/logo.eps}\\[1cm]    
+
+      \textsc{\LARGE Heriot-Watt University}\\[1.5cm]
+
+      \textsc{\Large Final Year Dissertation}\\[0.5cm]
+
+
+      % Title
+      \HRule \\[0.4cm]
+      { \huge \bfseries Fast Algorithms for Hard Problems}\\[0.4cm]
+
+      \HRule \\[1.5cm]
+
+      % Author and supervisor
+      \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+          \emph{Author:}\\
+          Joseph Ray \textsc{Davidson}
+        \end{flushleft}
+      \end{minipage}
+      \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+          \emph{Supervisor:} \\
+           ~Dr. David \textsc{Corne} 
+        \end{flushright}
+      \end{minipage}
+
+      \vfill
+
+      % Bottom of the page
+      {\large \today}
+
+    \end{center}
+
+  \end{titlepage}
+
+  \begin{abstract}
+    In computer science, there are many problems that can currently only be rigourusly solved
+    by using an exhaustive search method, brute force. For these problems, it is acceptable to
+    instead only search for a solution that is a `good enough' approximation for the task at hand.
+    As a general rule, there is an accuracy -- speed tradeoff for these methods. 
+
+    In this dissertation, I shall investigate the usage of certain techniques to obtain more accurate
+    results without sacraficing speed     
+
+  \end{abstract}
+  \newpage
+
+  \tableofcontents
+
+  \newpage
+
+  \section{Introduction}
+
+  \section{Greedy algorithms}
+
+  \section{Artificial neural networks}
+
+  \section{Kernelization}
+
+  \section{Results and conclusions}
+
+  \appendix
+  \section{Code}
+    
+
+  \bibliographystyle{alpha}
+  \bibliography{citation}
+
+\end{document}

@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Greedy algorithms}{3}
+\contentsline {section}{\numberline {3}Artificial neural networks}{3}
+\contentsline {subsection}{\numberline {3.1}Architecture}{3}
+\contentsline {subsubsection}{\numberline {3.1.1}Other features}{4}
+\contentsline {section}{\numberline {4}Kernelization}{4}
+\contentsline {section}{\numberline {5}Results and conclusions}{4}
+\contentsline {section}{\numberline {A}Code}{4}

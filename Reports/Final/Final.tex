@@ -1,0 +1,172 @@
+\documentclass[11pt]{article}
+\usepackage{setspace}
+\usepackage[a4paper]{geometry}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{mdwlist}
+%\doublespacing
+
+
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+
+%\newcommand{\qed}{\nobreak \ifvmode \relax \else
+ %     \ifdim\lastskip<1.5em \hskip-\lastskip
+ %     \hskip1.5em plus0em minus0.5em \fi \nobreak
+ %     \vrule height0.75em width0.5em depth0.25em\fi}
+
+
+\begin{document}
+
+
+  \begin{titlepage}
+
+    \begin{center}
+
+      % Upper part of the page
+       %\includegraphics[width=0.15\textwidth]{~/Dissertation/Reports/Deliverable1/logo.eps}\\[1cm]    
+
+      \textsc{\LARGE Heriot-Watt University}\\[1.5cm]
+
+      \textsc{\Large Final Year Dissertation}\\[0.5cm]
+
+
+      % Title
+      \HRule \\[0.4cm]
+      { \huge \bfseries Fast Algorithms for Hard Problems}\\[0.4cm]
+
+      \HRule \\[1.5cm]
+
+      % Author and supervisor
+      \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+          \emph{Author:}\\
+          Joseph Ray \textsc{Davidson}
+        \end{flushleft}
+      \end{minipage}
+      \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+          \emph{Supervisor:} \\
+           ~Dr. David \textsc{Corne} 
+        \end{flushright}
+      \end{minipage}
+
+      \vfill
+
+      % Bottom of the page
+      {\large \today}
+
+    \end{center}
+
+  \end{titlepage}
+
+  \begin{abstract}
+    In computer science, there are many problems that can currently only be rigorously solved
+    by using an exhaustive search method, brute force. For these problems, it is acceptable to
+    instead only search for a solution that is a `good enough' approximation for the task at hand.
+    As a general rule, there is an accuracy -- speed trade off for these methods. 
+
+    In this dissertation, I shall investigate the usage of certain techniques to obtain more accurate
+    results without sacrificing speed.      
+
+  \end{abstract}
+  \newpage
+
+  \tableofcontents
+
+  \newpage
+
+  \section{Introduction}
+
+  \section{Greedy algorithms}
+
+  \section{Artificial neural networks}
+    For this part of the experiment, I implemented a framework to build and train artificial neural networks.
+    This framework allows a user to build acyclic feedforward ANN of arbitrary size and makes
+    use of an implementation of the backpropagation algorithm to train the network.
+
+    \subsection{Architecture}
+      The ANN as a whole has two classes: the SigUnit class and the ANN class.
+      External programs interact with the ANN class, which in turn uses the SigUnit class to create the
+      sigmoid units which make up the network itself.
+
+      Sigmoid units were chosen over perceptrons becuause of the diffrent threshold functions of the two.
+      Perceptrons calculate the threshold output as a linear combination of the inputs, which is only 
+      really useful in neural networks that calculate linear functions. Sigmoid units, on the other hand, calculate
+      the output as a continious function of it's input as shown below.\cite{Mitchell.97} (\ref{SigFunc})
+
+      \begin{equation} \label{SigFunc} 
+        \sigma(y) = \frac{1}{1+e^{-y}}
+      \end{equation}  
+
+      The ANN class keeps a record of all of these sigmoid units and each newly unit has an
+      identifier, a list
+      of input units, a randomised corresponding weight for each input (in the range $-0.05$ to $0.05$), a
+      list of output units as well as a number of variables that allow the ANN class to see if it has 
+      recently performed a calculation and how many inputs it need before it can make a calculation.
+
+      There are a number of conventions that the ANN framework uses to keep things in order:
+      \begin{itemize*}
+        \item All sigmoid units have a constant input of 1. This input does have a random weight like all
+              the other inputs however. By convention, this input comes from a unit with an id of $-1$.
+        \item All of the inputs into the network are sigmoid units with no input list and a flag that
+              indicates they are part of the input layer.
+        \item All of the units in the output layer have no output list and a flag that indicates that
+              they are in the output layer.
+      \end{itemize*}   
+
+    \subsection{Calculations and training}
+
+      A calculation requires a set of input units and the corresponding values for each.
+      In practice, this is modelled by a 2-dimentional array. The ANN class prepares each unit
+      by giving it the input values it needs and then invokes the unit's fire() method. The
+      unit then calculates its output value and returns the output along with a list of the
+      units that the output is to go to.
+
+      The ANN uses this information to prepare and fire the other units in the network and
+      continues to operate in this manner until all of the units have fired. The output from
+      the network is collected and returned.
+         
+      
+
+
+      \subsubsection{Other features}
+        The ANN class has 
+
+      
+
+      \begin{enumerate*}
+        \item For each unit in the network: 
+        \begin{enumerate*}
+          \item Reset.
+        \end{enumerate*}
+        \item While all of the units haven't fired:
+        \begin{enumerate*}
+          \item For each unit in the network:
+          \begin{enumerate*} 
+            \item
+          \end{enumerate*}
+        \end{enumerate*}
+      \end{enumerate*}
+
+  \section{Kernelization}
+
+  \section{Results and conclusions}
+
+  \appendix
+  \section{Code}
+    
+
+  \bibliographystyle{alpha}
+  \bibliography{citation}
+
+\end{document}

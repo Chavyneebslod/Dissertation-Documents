@@ -9,7 +9,7 @@
 %\usepackage{mathtools}
 \usepackage{amsthm}
 \usepackage{mdwlist}
-%\doublespacing
+\doublespacing
 
 
 
@@ -94,21 +94,35 @@
     This framework allows a user to build acyclic feedforward ANN of arbitrary size and makes
     use of an implementation of the backpropagation algorithm to train the network.
 
-    \subsection{Architecture}
+    \subsection{Framework architecture}
       The ANN as a whole has two classes: the SigUnit class and the ANN class.
       External programs interact with the ANN class, which in turn uses the SigUnit class to create the
       sigmoid units which make up the network itself.
 
-      Sigmoid units were chosen over perceptrons becuause of the diffrent threshold functions of the two.
-      Perceptrons calculate the threshold output as a linear combination of the inputs, which is only 
-      really useful in neural networks that calculate linear functions. Sigmoid units, on the other hand, calculate
-      the output as a continious function of it's input as shown below.\cite{Mitchell.97} (\ref{SigFunc})
+      There were two choices for the computation unit of the ANN, sigmoid units and perceptrons.
+      Sigmoid units were chosen over perceptrons because of the different threshold functions of the two;
+      Perceptrons calculate the output as a linear combination of the inputs, if this combination is over a given threshold
+      value, a value of 1 is outputted, otherwise -1. Such units are not useful for approximating complex functions.
 
+      Sigmoid units, on the other hand, calculate
+      the output as a continuous function of it's input as shown below.\cite{Mitchell.97} (\ref{SigFunc})
+      With this framework, I am making the implicit assumption that the vertex cover problem is a
+      continuous function rather than a discontinuous one.
+     
+      My reasoning for this is as follows: We can 
+      trivially see, for any given graph $G(V,E)$, that the minimum valid vertex cover $VC$ with
+      the lowest cardinality is $\mid VC \mid = 0$, this fact holds when $E = \emptyset$.
+      Conversely, the minimum valid vertex cover $VC$ with the highest
+      cardinality is $\mid VC \mid = |V|-1$. This is true when $G$ is a complete graph (i.e. $|E|= \frac{|V|(|V|-1)}{2}$).          
       \begin{equation} \label{SigFunc} 
         \sigma(y) = \frac{1}{1+e^{-y}}
       \end{equation}  
 
-      The ANN class keeps a record of all of these sigmoid units and each newly unit has an
+      We can therefore see that there is correlation between the cardinality of the set of edges $E$ and
+      the cardinality of the minimum vertex cover $VC$ associated with $G$. This correlation compels
+      me to conclude that the vertex cover problem is an instance of a continuous function.  
+
+      The ANN class keeps a record of all of these sigmoid units and each newly created unit has an
       identifier, a list
       of input units, a randomised corresponding weight for each input (in the range $-0.05$ to $0.05$), a
       list of output units as well as a number of variables that allow the ANN class to see if it has 
@@ -122,45 +136,76 @@
               indicates they are part of the input layer.
         \item All of the units in the output layer have no output list and a flag that indicates that
               they are in the output layer.
-      \end{itemize*}   
+      \end{itemize*}
+   
 
-    \subsection{Calculations and training}
+      \subsubsection{Calculations and training}
 
-      A calculation requires a set of input units and the corresponding values for each.
-      In practice, this is modelled by a 2-dimentional array. The ANN class prepares each unit
-      by giving it the input values it needs and then invokes the unit's fire() method. The
-      unit then calculates its output value and returns the output along with a list of the
-      units that the output is to go to.
+        A calculation requires a set of input units and the corresponding values for each.
+        In practice, this is modelled by a 2-dimensional array. The ANN class prepares each unit
+        by giving it the input values it needs and then invokes the units fire() method. The
+        unit then calculates its output value and returns the output along with a list of the
+        units that the output is to go to.
 
-      The ANN uses this information to prepare and fire the other units in the network and
-      continues to operate in this manner until all of the units have fired. The output from
-      the network is collected and returned.
-         
-      
+        The ANN uses this information to prepare and fire the other units in the network and
+        continues to operate in this manner until all of the units have fired. The output from
+        the network is collected and returned.
+          
+        To train the network using the graph instances created by the test case generator, it was
+        decided that the network would be given features of individual vertices and then it would output
+        two probablities: the probability of the vertex being in the covering set, and the probability of it not.
+        Backpropagation would then ensue, applying the correct result to the network and adjusting the weights.          
 
+        ******* Validation here *******
 
-      \subsubsection{Other features}
-        The ANN class has 
+        \subsubsection{Other features}
+          The ANN class has 
 
-      
+     \subsection{ANN instance design}
 
-      \begin{enumerate*}
-        \item For each unit in the network: 
-        \begin{enumerate*}
-          \item Reset.
-        \end{enumerate*}
-        \item While all of the units haven't fired:
-        \begin{enumerate*}
-          \item For each unit in the network:
-          \begin{enumerate*} 
-            \item
-          \end{enumerate*}
-        \end{enumerate*}
-      \end{enumerate*}
+       \subsubsection{Feature selection}
+         Feature selection was largely a case of thinking of a number of vertex properties and selecting those which
+         would likely help in determinining whether a particular vertex was part of the covering set or not. These
+         features were used to create a number of exhaustive data sets (the details of which are explained in
+          section \ref{sec:stats}).
 
+         Each instance in each set was then analysed by an implmentation of n\'{a}ive Bayes which trained itself on 80\%
+         of the records and attemped to correctly classify the remaining 20\%.
+  
+         The n\'{a}ive Bayes algorithm returns an accuracy percentage of how well it classified the remaining examples
+         in each instance. This data was then collated to produce plottings (said plottings can also be found in
+         section \ref{sec:stats}) which gave me a visual representation of how good of an indicator the features
+         were.
+
+         In the end the selected features were:
+         \begin{itemize*}
+           \item vertex degree / maximum possible indegree.
+           \item cluster coefficient of the vertex.
+           \item mean (vertex degree / maximum possible indegree) of all the neighbouring vertices.
+           \item mean cluster coefficient of all the neighbours.
+           \item 
+         \end{itmeize*}      
+     
+
+  \section{Test case generation framework}
+    In order for an ANN to be an efficient solver of problems, it must
+    first be trained. This training takes the form of supervised learning, where
+    and input and a target output are given to the network. It processes the input,
+    compares the calculated output to the provided one and adjusts its weights accordingly
+    to produce more accurate results. 
+
+    The observant reader will have already spotted a potential problem. If we're to train the
+    ANN with any effectiveness, we'll have to create a supervisor that can not only produce problem
+    instances, but can also solve them in order to pass the answer to the ANN.
+    Therein lies the issue, we have to create non-trivial instances of the problem and then solve them. 
+
+    \subsection{Creating statistic datasets} \label{sec:stats}
+     
+ 
   \section{Kernelization}
 
   \section{Results and conclusions}
+
 
   \appendix
   \section{Code}

@@ -70,13 +70,13 @@
   \end{titlepage}
 
   \begin{abstract}
-    In computer science, there are many problems that can currently only be rigourusly solved
+    In computer science, there are many problems that can currently only be rigorously solved
     by using an exhaustive search method, brute force. For these problems, it is acceptable to
     instead only search for a solution that is a `good enough' approximation for the task at hand.
-    As a general rule, there is an accuracy -- speed tradeoff for these methods. 
+    As a general rule, there is an accuracy -- speed trade off for these methods. 
 
     In this dissertation, I shall investigate the usage of certain techniques to obtain more accurate
-    results without sacraficing speed     
+    results without sacrificing speed.      
 
   \end{abstract}
   \newpage
@@ -90,6 +90,88 @@
   \section{Greedy algorithms}
 
   \section{Artificial neural networks}
+    For this part of the experiment, I implemented a framework to build and train artificial neural networks.
+    This framework allows a user to build acyclic feedforward ANN of arbitrary size and makes
+    use of an implementation of the backpropagation algorithm to train the network.
+
+    \subsection{Framework architecture}
+      The ANN as a whole has two classes: the SigUnit class and the ANN class.
+      External programs interact with the ANN class, which in turn uses the SigUnit class to create the
+      sigmoid units which make up the network itself.
+
+      There were two choices for the computation unit of the ANN, sigmoid units and perceptrons.
+      Sigmoid units were chosen over perceptrons becuause of the diffrent threshold functions of the two;
+      Perceptrons calculate the output as a linear combination of the inputs, if this combination is over a given theshold
+      value, a value of 1 is outputed, otherwise -1. Such units are not useful for approximating complex functions.
+
+      Sigmoid units, on the other hand, calculate
+      the output as a continious function of it's input as shown below.\cite{Mitchell.97} (\ref{SigFunc})
+      With this framework, I am making the implicit assumption that the vertex cover problem is a
+      continuous function rather than a discontinuous one.
+     
+      My reasoning for this is as follows: We can 
+      trivially see, for any given graph $G(V,E)$, that the minmum valid vertex cover $VC$ with
+      the lowest cardinality is $\mid VC \mid = 0$, this fact holds when $E = \emptyset$.
+      Conversley, the minmum valid vertex cover $VC$ with the highest
+      cardinality is $\mid VC \mid = |V|-1$. This is true when $G$ is a complete graph (i.e. $|E|= \frac{|V|(|V|-1)}{2}$).          
+      \begin{equation} \label{SigFunc} 
+        \sigma(y) = \frac{1}{1+e^{-y}}
+      \end{equation}  
+
+      We can therefore see that there is correlation between the cardinality of the set of edges $E$ and
+      the cardinality of the minimum vertex cover $VC$ associated with $G$. This correlation compells
+      me to conclude that the vertex cover problem is an instance of a continuous function.  
+
+      The ANN class keeps a record of all of these sigmoid units and each newly created unit has an
+      identifier, a list
+      of input units, a randomised corresponding weight for each input (in the range $-0.05$ to $0.05$), a
+      list of output units as well as a number of variables that allow the ANN class to see if it has 
+      recently performed a calculation and how many inputs it need before it can make a calculation.
+
+      There are a number of conventions that the ANN framework uses to keep things in order:
+      \begin{itemize*}
+        \item All sigmoid units have a constant input of 1. This input does have a random weight like all
+              the other inputs however. By convention, this input comes from a unit with an id of $-1$.
+        \item All of the inputs into the network are sigmoid units with no input list and a flag that
+              indicates they are part of the input layer.
+        \item All of the units in the output layer have no output list and a flag that indicates that
+              they are in the output layer.
+      \end{itemize*}
+   
+
+      \subsubsection{Calculations and training}
+
+        A calculation requires a set of input units and the corresponding values for each.
+        In practice, this is modelled by a 2-dimentional array. The ANN class prepares each unit
+        by giving it the input values it needs and then invokes the unit's fire() method. The
+        unit then calculates its output value and returns the output along with a list of the
+        units that the output is to go to.
+
+        The ANN uses this information to prepare and fire the other units in the network and
+        continues to operate in this manner until all of the units have fired. The output from
+        the network is collected and returned.
+          
+      
+
+
+        \subsubsection{Other features}
+          The ANN class has 
+
+      
+
+      \begin{enumerate*}
+        \item For each unit in the network: 
+        \begin{enumerate*}
+          \item Reset.
+        \end{enumerate*}
+        \item While all of the units haven't fired:
+        \begin{enumerate*}
+          \item For each unit in the network:
+          \begin{enumerate*} 
+            \item
+          \end{enumerate*}
+        \end{enumerate*}
+      \end{enumerate*}
 
   \section{Kernelization}
 

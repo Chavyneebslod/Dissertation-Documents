@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=latex 2010.11.5)  13 JAN 2011 08:53
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2010.11.5)  15 FEB 2011 14:40
 entering extended mode
 **Final.tex
 (./Final.tex
@@ -62,10 +62,11 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/usr/share/texmf/tex/latex/graphics/graphics.cfg
 File: graphics.cfg 2005/02/03 v1.3 graphics configuration of teTeX/TeXLive
 )
-Package graphics Info: Driver file: dvips.def on input line 80.
+Package graphics Info: Driver file: pdftex.def on input line 80.
 
-(/usr/share/texmf/tex/latex/graphics/dvips.def
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+(/usr/share/texmf/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count90
 ))
 \Gin@req@height=\dimen107
 \Gin@req@width=\dimen108
@@ -98,13 +99,13 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/share/texmf/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count90
+\inf@bad=\count91
 LaTeX Info: Redefining \frac on input line 211.
-\uproot@=\count91
-\leftroot@=\count92
+\uproot@=\count92
+\leftroot@=\count93
 LaTeX Info: Redefining \overline on input line 307.
-\classnum@=\count93
-\DOTSCASE@=\count94
+\classnum@=\count94
+\DOTSCASE@=\count95
 LaTeX Info: Redefining \ldots on input line 379.
 LaTeX Info: Redefining \dots on input line 382.
 LaTeX Info: Redefining \cdots on input line 467.
@@ -113,15 +114,15 @@ LaTeX Info: Redefining \cdots on input line 467.
 \big@size=\dimen111
 LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
-\macc@depth=\count95
-\c@MaxMatrixCols=\count96
+\macc@depth=\count96
+\c@MaxMatrixCols=\count97
 \dotsspace@=\muskip10
-\c@parentequation=\count97
-\dspbrk@lvl=\count98
+\c@parentequation=\count98
+\dspbrk@lvl=\count99
 \tag@help=\toks18
-\row@=\count99
-\column@=\count100
-\maxfields@=\count101
+\row@=\count100
+\column@=\count101
+\maxfields@=\count102
 \andhelp@=\toks19
 \eqnshift@=\dimen112
 \alignsep@=\dimen113
@@ -161,8 +162,8 @@ Package: amsthm 2004/08/06 v2.20
 (/usr/share/texmf/tex/latex/mdwtools/mdwlist.sty
 Package: mdwlist 1996/05/02 1.1 Various list-related things
 )
-\c@definition=\count102
-\c@corollary=\count103
+\c@definition=\count103
+\c@corollary=\count104
  (./Final.aux)
 \openout1 = `Final.aux'.
 
@@ -195,7 +196,7 @@ truedimen: --
 includehead: --
 includefoot: --
 includemp: --
-driver: 
+driver: pdftex
 -------------------- Page layout dimensions and switches
 \paperwidth  597.50787pt
 \paperheight 845.04684pt
@@ -217,9 +218,43 @@ driver:
 
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
-LaTeX Font Info:    Try loading font information for U+msa on input line 55.
 
-(/usr/share/texmf/tex/latex/amsfonts/umsa.fd
+(/usr/share/texmf/tex/context/base/supp-pdf.tex
+(/usr/share/texmf/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Miscellaneous (2004.10.26)
+\protectiondepth=\count105
+\scratchcounter=\count106
+\scratchtoks=\toks28
+\scratchdimen=\dimen118
+\scratchskip=\skip53
+\scratchmuskip=\muskip11
+\scratchbox=\box28
+\scratchread=\read1
+\scratchwrite=\write3
+\zeropoint=\dimen119
+\onepoint=\dimen120
+\onebasepoint=\dimen121
+\minusone=\count107
+\thousandpoint=\dimen122
+\onerealpoint=\dimen123
+\emptytoks=\toks29
+\nextbox=\box29
+\nextdepth=\dimen124
+\everyline=\toks30
+\!!counta=\count108
+\!!countb=\count109
+\recursecounter=\count110
+)
+loading : Context Support Macros / PDF (2004.03.26)
+\nofMPsegments=\count111
+\nofMParguments=\count112
+\MPscratchCnt=\count113
+\MPscratchDim=\dimen125
+\MPnumerator=\count114
+\everyMPtoPDFconversion=\toks31
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 55.
+ (/usr/share/texmf/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2002/01/19 v2.2g AMS font definitions
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 55.
@@ -228,27 +263,40 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 55.
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
 ) [1
 
-] [1] (./Final.toc)
-\tf@toc=\write3
-\openout3 = `Final.toc'.
+{/usr/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [1] (./Final.toc)
+\tf@toc=\write4
+\openout4 = `Final.toc'.
 
  [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 124.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 133.
 
 
 (/usr/share/texmf/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 124.
- [3] (./Final.bbl) [4] (./Final.aux) ) 
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 133.
+ [3] [4] (./Final.bbl) [5]
+(./Final.aux) ) 
 Here is how much of TeX's memory you used:
- 2111 strings out of 94494
- 25369 string characters out of 1176629
- 77926 words of memory out of 1000000
- 5258 multiletter control sequences out of 10000+50000
- 14825 words of font info for 55 fonts, out of 500000 for 2000
+ 2460 strings out of 94493
+ 29792 string characters out of 1176606
+ 83054 words of memory out of 1000000
+ 5607 multiletter control sequences out of 10000+50000
+ 12626 words of font info for 46 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
- 27i,8n,24p,221b,255s stack positions out of 1500i,500n,5000p,200000b,5000s
-
-Output written on Final.dvi (5 pages, 8420 bytes).
+ 27i,5n,24p,221b,255s stack positions out of 1500i,500n,5000p,200000b,5000s
+PDF statistics:
+ 55 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 1 words of extra memory for PDF output out of 65536
+</usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/
+texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/
+cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/
+fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi
+10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmbx10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.p
+fb></usr/share/texmf/fonts/type1/bluesky/cm/cmti12.pfb></usr/share/texmf/fonts/
+type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmcsc10.pf
+b>
+Output written on Final.pdf (6 pages, 82853 bytes).
